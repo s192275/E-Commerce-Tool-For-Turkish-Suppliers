@@ -28,4 +28,5 @@ You can run the gradio server using
 I worked with LLaMA3 model. To use this you have a HuggingFace token. You can get yourself using this [link](https://www.geeksforgeeks.org/how-to-access-huggingface-api-key/) After getting a key you should create a .env file and you should initialize a variable like ** HF_TOKEN = "YOUR_API_KEY" 
 
 ## In-App Images
-https://github.com/s192275/E-Commerce-Tool-For-Turkish-Suppliers/blob/main/recel.png
+![alt text]([https://github.com/s192275/E-Commerce-Tool-For-Turkish-Suppliers/blob/main/recel.png])
+
