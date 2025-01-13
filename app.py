@@ -8,7 +8,7 @@ from PIL import Image
 
 LLaMA = llama.Llama
 Vismodel = real_esrgan_and_clahe.VisModel
-# Resim üzerinde işlemler yapan fonksiyon
+# Getting models from ai_modules and plotting the images
 def process_image(image):
     model = Vismodel(image)
     gan = model.pred_gan(image)
@@ -36,16 +36,16 @@ def process_image(image):
     
     return combined_image
 
-# Ürün açıklaması fonksiyonu
+# Product description function using LLaMA
 def product_description(description):
     llama_model = LLaMA(description)
     response = llama_model.generate_response()
     return response
 
 
-# Gradio arayüzünü oluşturma
+# Gradio interface
 with gr.Blocks() as demo:
-    # Sekmeler oluşturuluyor
+    # Creating tabs
     with gr.Tab("Ürün Görsel Kalitesi Arttırma"):
         with gr.Row():
             input_image = gr.Image(label="Upload Image", type="numpy")
@@ -67,6 +67,6 @@ with gr.Blocks() as demo:
         # Ürün açıklaması fonksiyonu
         description_input.submit(product_description, inputs=description_input, outputs=description_output)
 
-# Uygulamayı başlat
-demo.launch(debug=True)
+# Starting app
+demo.launch()
 
