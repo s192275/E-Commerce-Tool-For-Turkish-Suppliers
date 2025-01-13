@@ -14,8 +14,10 @@ class VisModel():
     def __init__(self, img):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     def pred_gan(self, img):
+        #Getting model to be ready
         model = RealESRGAN(device = self.device, scale = 2)
         model.load_weights('Real-ESRGAN/weights/RealESRGAN_x2.pth')
+        #Image rearrangements and model's fit
         image = Image.fromarray(img).convert('RGB')
         sr_image = model.predict(image)
         try:
@@ -31,16 +33,16 @@ class VisModel():
         image = Image.fromarray(img).convert('RGB')
         sr_image = model.predict(image)        
         img_np = np.array(sr_image)
+        #Implying CLAHE for all channels of image
         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
         
-        # Her bir renk kanalı için CLAHE uygula
         channels = cv2.split(img_np)
         clahe_channels = [clahe.apply(channel) for channel in channels]
         
-        # Sonuçları birleştir
+        # Merging the results
         clahe_image = cv2.merge(clahe_channels)
 
-        # Yeni görüntüyü kaydet
+        # Saving the new image
         try:
             output_path = 'upscaled/gan_with_clahe.png'
             Image.fromarray(clahe_image).save(output_path)
