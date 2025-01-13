@@ -5,6 +5,7 @@ from deep_translator import GoogleTranslator
 from deep_translator import single_detection
 import logging 
 
+#Making logging's config
 logging.basicConfig(filename = "logs.log",
                     level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -12,6 +13,7 @@ logging.basicConfig(filename = "logs.log",
 
 class Llama():
     def __init__(self, query):
+       # Loading environment and class variables
         load_dotenv()
         self.query = query
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,9 +27,10 @@ class Llama():
 
     
     def generate_response(self):
+      #Detecting language and translating into english
         detected_language = single_detection(self.query, api_key=None)  # `api_key=None` ile ücretsiz mod
         query_eng = GoogleTranslator(source = "auto", target = "en").translate(self.query)
-        
+        #System and user prompts
         messages = [{
         "role" : "system",
         "content" : "You are a model that optimizes suppliers' product descriptions and makes the product descriptions provided to you by users suitable for the e-commerce environment. "
