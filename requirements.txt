@@ -1,0 +1,11 @@
+gradio
+cv2
+numpy
+matplotlib
+deep-translator
+transformers
+pytorch
+dotenv
+logging
+PIL
+numpy
