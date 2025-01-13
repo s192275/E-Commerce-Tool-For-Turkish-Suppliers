@@ -5,7 +5,7 @@ This tool is designed for Turkish e-commerce suppliers and is designed to edit p
 
 First you should create a virtual environment after installing the project. You should create virtual environment because there may be a conflict due to library installations. 
 
-**To create a virtual environment you can use this command sequentially : **
+**To create a virtual environment you can use this command sequentially :**
 ```python
   python -m venv venv
   venv\Scripts\activate
