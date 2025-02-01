@@ -15,7 +15,7 @@ After using this command your virtual environment should be ready. If it is not 
 ## Running the Requirements File
 To do this you should use 
 ```python
-  pip pip install -requirements.txt
+  pip install -requirements.txt
 ```
 if this doesn't work you should try install all libraries by manually using pip install <lib_name> command
 
